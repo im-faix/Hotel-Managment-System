@@ -49,7 +49,7 @@ class InformationOfCustomer implements Serializable {
 
 class CustomerManager {
     private static final String FILE_NAME = "ProjectData.txt";
-    private List<InformationOfCustomer> customers;0
+    private List<InformationOfCustomer> customers;
 
     public CustomerManager() {
         customers = loadCustomers();
