@@ -59,4 +59,14 @@ public class CustomerManager {
             return new ArrayList<>();
         }
     }
+
+    public InformationOfCustomer getCustomer(int index) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCustomer'");
+    }
+
+    public int getCustomerCount() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCustomerCount'");
+    }
 }
