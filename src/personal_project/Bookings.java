@@ -18,10 +18,13 @@ public class Bookings
             {
                 case 1:
                       System.out.println("Collect their Details");
+                      CollectingDetails.addingDetails();
                       break;
                 
                 case 2:
                     System.out.println("Thanks and visit again");
+                    CustomerManager cs = new CustomerManager();
+                    System.out.println(cs.getCustomerCount());
                     break;
                 case 3:
                      System.exit(0);
