@@ -85,7 +85,7 @@ public class HotelManagementSystem {
                     }
                 }
                 case 4 -> {
-                    System.out.println("Exiting...");
+                    System.out.println("Exiting from the Application");
                     sc.close();
                     return;
                 }
