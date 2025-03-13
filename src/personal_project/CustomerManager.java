@@ -1,31 +1,20 @@
 package personal_project;
+import java.util.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-public class CustomerManager {
-    private static final String FILE_NAME = "ProjectData.txt";
+class CustomerManager {
     private List<InformationOfCustomer> customers;
 
     public CustomerManager() {
-        customers = loadCustomers();
+        customers = new ArrayList<>();
     }
 
     public void addCustomer(InformationOfCustomer customer) {
         customers.add(customer);
-        saveCustomers();
     }
 
     public void removeCustomer(int index) {
         if (index >= 0 && index < customers.size()) {
             customers.remove(index);
-            saveCustomers();
         } else {
             System.out.println("Invalid index.");
         }
@@ -40,33 +29,15 @@ public class CustomerManager {
             }
         }
     }
-
-    private void saveCustomers() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:\\FILEIO\\ProjectData.txt"))) {
-            oos.writeObject(customers);
-        } catch (IOException e) {
-            System.out.println("Error saving customer data.");
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private List<InformationOfCustomer> loadCustomers() {
-        File file = new File(FILE_NAME);
-        if (!file.exists()) return new ArrayList<>();
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            return (List<InformationOfCustomer>) ois.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            return new ArrayList<>();
-        }
+    
+    public int getCustomerCount() {
+        return customers.size();
     }
 
     public InformationOfCustomer getCustomer(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCustomer'");
-    }
-
-    public int getCustomerCount() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCustomerCount'");
+        if (index >= 0 && index < customers.size()) {
+            return customers.get(index);
+        }
+        return null;
     }
 }

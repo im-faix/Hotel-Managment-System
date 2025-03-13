@@ -1,8 +1,8 @@
 package personal_project;
 
-import java.io.Serializable;
+// import java.io.Serializable;
 
-class InformationOfCustomer implements Serializable {
+class InformationOfCustomer {
     private String name;
     private long phone;
     private String validId;
@@ -19,27 +19,12 @@ class InformationOfCustomer implements Serializable {
         this.payment = payment;
     }
 
-    public String getName() { 
-        return name;
-     }
-    public long getPhone()
-     {
-         return phone;
-         }
-    public String getValidId()
-     {
-         return validId;
-     }
-    public String getRoomType() { 
-        return roomType;
-     }
-    public int getNumDays()
-     {
-         return numDays;
-     }
-    public double getPayment() { 
-        return payment; 
-    }
+    public String getName() { return name; }
+    public long getPhone() { return phone; }
+    public String getValidId() { return validId; }
+    public String getRoomType() { return roomType; }
+    public int getNumDays() { return numDays; }
+    public double getPayment() { return payment; }
     
     @Override
     public String toString() {
