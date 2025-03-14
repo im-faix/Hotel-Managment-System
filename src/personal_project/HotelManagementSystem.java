@@ -26,8 +26,15 @@ public class HotelManagementSystem {
                         System.out.println("Invalid phone number. Try again.");
                     }
 
-                    System.out.print("Enter Valid ID: ");
-                    String validId = sc.nextLine();
+                    
+                    String validId;  
+                    while (true) {
+                        System.out.print("Enter Valid ID: ");
+                        validId = sc.nextLine();
+                        sc.nextLine();
+                        if (String.valueOf(validId).length() == 10 || validId.length()==12) break;
+                        System.out.println("Invalid Valid. Try again.");
+                    }
                     
                     System.out.println("1. Deluxe - 7000/night\n2. Business - 5000/night\n3. General - 3500/night");
                     System.out.print("Choose Room Type: ");
