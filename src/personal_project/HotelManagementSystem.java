@@ -30,10 +30,11 @@ public class HotelManagementSystem {
                     String validId;  
                     while (true) {
                         System.out.print("Enter Valid ID: ");
-                        validId = sc.nextLine();
+                        validId = sc.next();
                         sc.nextLine();
-                        if (String.valueOf(validId).length() == 10 || validId.length()==12) break;
-                        System.out.println("Invalid Valid. Try again.");
+                        if (validId.length() == 10 || validId.length() == 12) break;
+                        else
+                         System.out.println("Invalid Valid. Try again.");
                     }
                     
                     System.out.println("1. Deluxe - 7000/night\n2. Business - 5000/night\n3. General - 3500/night");
