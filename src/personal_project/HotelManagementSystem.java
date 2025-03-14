@@ -1,4 +1,5 @@
 package personal_project;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HotelManagementSystem {
@@ -7,6 +8,7 @@ public class HotelManagementSystem {
         CustomerManager manager = new CustomerManager();
 
         while (true) {
+            try{
             System.out.println("\n1. Add Customer\n2. List Customers\n3. Checkout Customer\n4. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
@@ -43,12 +45,17 @@ public class HotelManagementSystem {
                     System.out.print("Enter Number of Days: ");
                     int numDays = sc.nextInt();
                     
-                    String roomType = switch (roomChoice) {
-                        case 1 -> "Deluxe";
-                        case 2 -> "Business";
-                        case 3 -> "General";
-                        default -> "Unknown";
+                    Room room = switch (roomChoice) {
+                        case 1 -> new DeluxeRoom();
+                        case 2 -> new BusinessRoom();
+                        case 3 -> new GeneralRoom();
+                        default -> null;
                     };
+                    if(room == null)
+                    {
+                        System.out.println("Invalid Room Choice");
+                        continue;
+                    }
 
                     double payment = switch (roomChoice) {
                         case 1 -> 7000 * numDays;
@@ -57,7 +64,7 @@ public class HotelManagementSystem {
                         default -> 0;
                     };
                     
-                    manager.addCustomer(new InformationOfCustomer(name, phone, validId, roomType, numDays, payment));
+                    manager.addCustomer(new InformationOfCustomer(name, phone, validId, room, numDays));
                     System.out.println("Booking successful! Total Payment: " + payment);
                 }
                 case 2 -> manager.listCustomers();
@@ -75,6 +82,11 @@ public class HotelManagementSystem {
                 }
                 default -> System.out.println("Invalid choice!");
             }
+        }catch(InputMismatchException e){
+            System.out.println("Invalid Input");
+            sc.nextLine();
         }
     }
+}
+
 }
